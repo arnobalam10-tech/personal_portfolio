@@ -1,0 +1,539 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ====================================
+   DESIGN TOKENS
+   ==================================== */
+:root {
+  --bg: #0A0A0A;
+  --bg-secondary: #111111;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --accent: #3B5BFF;
+  --accent-light: #6B8AFF;
+  --accent-dark: #2540CC;
+  --gray-border: rgba(255,255,255,0.08);
+  --card-bg: rgba(255,255,255,0.03);
+  --blue-bg: #3B5BFF;
+  --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+[data-theme="light"] {
+  --bg: #F8F6F0;
+  --bg-secondary: #EDEBE5;
+  --text-primary: #0A0A0A;
+  --text-secondary: #4B5563;
+  --accent: #3B5BFF;
+  --accent-light: #2540CC;
+  --accent-dark: #6B8AFF;
+  --gray-border: rgba(0,0,0,0.08);
+  --card-bg: rgba(0,0,0,0.03);
+  --blue-bg: #3B5BFF;
+}
+
+/* ====================================
+   GLOBAL RESET & BASE
+   ==================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles this */
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+@media (pointer: coarse) {
+  body { cursor: auto; }
+}
+
+/* ====================================
+   TYPOGRAPHY
+   ==================================== */
+.font-serif { font-family: 'Playfair Display', Georgia, serif; }
+.font-sans  { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+/* Fluid typography */
+.text-display {
+  font-size: clamp(4rem, 12vw, 14rem);
+  line-height: 0.9;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.text-hero-sub {
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ====================================
+   CUSTOM CURSOR
+   ==================================== */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 12px; height: 12px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor.expanded {
+  width: 48px;
+  height: 48px;
+}
+
+.cursor.view-mode {
+  width: 72px;
+  height: 72px;
+  background: var(--accent);
+  mix-blend-mode: normal;
+}
+
+.cursor.view-mode::after {
+  content: 'VIEW';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+@media (pointer: coarse) {
+  .cursor { display: none; }
+}
+
+/* ====================================
+   SCROLL PROGRESS BAR
+   ==================================== */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--accent);
+  z-index: 9998;
+  transform-origin: left;
+  transition: none;
+}
+
+/* ====================================
+   ANIMATIONS — KEYFRAMES
+   ==================================== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes aurora {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes counter-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes line-in {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ====================================
+   LOADING SCREEN
+   ==================================== */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #0A0A0A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99997;
+}
+
+.loading-bar-track {
+  width: 200px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+/* ====================================
+   NAVIGATION
+   ==================================== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background var(--transition), backdrop-filter var(--transition);
+}
+
+.nav.scrolled {
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(16px);
+}
+
+[data-theme="light"] .nav.scrolled {
+  background: rgba(248,246,240,0.85);
+}
+
+/* ====================================
+   SIDE DOTS
+   ==================================== */
+.side-dots {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 900;
+}
+
+.side-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.side-dot.active {
+  background: var(--accent);
+  transform: scale(1.5);
+}
+
+@media (max-width: 768px) {
+  .side-dots { display: none; }
+}
+
+/* ====================================
+   CTA BUTTON
+   ==================================== */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  border: none;
+  cursor: none;
+  text-decoration: none;
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 60px rgba(59, 91, 255, 0.4);
+  background: var(--accent-light);
+}
+
+/* ====================================
+   HERO SECTION
+   ==================================== */
+.hero {
+  min-height: 100vh;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-text-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hero-photo-wrap {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* ====================================
+   SECTION HEADINGS — REVEAL
+   ==================================== */
+.reveal-line {
+  overflow: hidden;
+  display: block;
+}
+
+/* ====================================
+   ABOUT SECTION
+   ==================================== */
+.about-section {
+  background: linear-gradient(to bottom, var(--bg) 0%, #0D0D18 100%);
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ====================================
+   CHOKKA SECTION
+   ==================================== */
+.chokka-section {
+  background: var(--accent);
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.pill-tag {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  cursor: default;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.pill-tag:hover {
+  transform: rotate(0deg) scale(1.08) !important;
+  background: rgba(255,255,255,0.3);
+}
+
+/* Instagram card */
+.ig-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+}
+
+.ig-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 0.8rem;
+}
+
+/* Odometer counter */
+.odometer-number {
+  font-family: 'Space Grotesk', monospace;
+  font-weight: 900;
+  font-size: clamp(5rem, 15vw, 12rem);
+  line-height: 1;
+  color: white;
+  letter-spacing: -0.05em;
+}
+
+/* ====================================
+   PORTFOLIO SECTION
+   ==================================== */
+.portfolio-section {
+  background: var(--bg);
+  padding: 8rem 0;
+  position: relative;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: none;
+  background: var(--card-bg);
+  border: 1px solid var(--gray-border);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card-img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-card-img {
+  transform: scale(1.05);
+}
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  transition: background 0.4s ease;
+}
+
+.project-card:hover .project-card-overlay {
+  background: linear-gradient(to top, rgba(10,10,50,0.95) 0%, rgba(10,10,50,0.4) 60%, transparent 100%);
+}
+
+.project-view-link {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-view-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====================================
+   CONTACT SECTION
+   ==================================== */
+.contact-section {
+  position: relative;
+  padding: 10rem 0 6rem;
+  overflow: hidden;
+}
+
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #050510 0%, #0D1A55 25%, #1B2580 50%, #0D1A55 75%, #050510 100%);
+  background-size: 300% 300%;
+  animation: aurora 10s ease-in-out infinite;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--gray-border);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: none;
+  text-decoration: none;
+  color: var(--text-primary);
+  background: var(--card-bg);
+}
+
+.social-link:hover {
+  border-color: var(--accent);
+  background: rgba(59, 91, 255, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(59, 91, 255, 0.2);
+}
+
+/* Back to top */
+.back-to-top {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-border);
+  background: var(--card-bg);
+  display: flex; align-items: center; justify-content: center;
+  cursor: none;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.back-to-top:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  transform: translateY(-4px);
+}
+
+/* ====================================
+   UTILITY CLASSES
+   ==================================== */
+.section-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .section-container { padding: 0 1.25rem; }
+}
+
+.accent-line {
+  display: block;
+  height: 1px;
+  background: var(--accent);
+  transform-origin: left;
+}
+
+/* ====================================
+   PREFERS-REDUCED-MOTION
+   ==================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-photo-wrap { animation: none; }
+}
+
+/* ====================================
+   HERO RESPONSIVE LAYOUT TOGGLE
+   ==================================== */
+/* Desktop composition — off on mobile */
+.hero-desktop { display: block; }
+.hero-mobile  { display: none !important; }
+
+@media (max-width: 767px) {
+  .hero-desktop { display: none !important; }
+  .hero-mobile  { display: flex !important; }
+}
+
