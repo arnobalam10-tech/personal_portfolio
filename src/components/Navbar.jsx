@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 
+/* sections = ['hero', 'about', 'skills', 'chokka', 'portfolio', 'design', 'contact'] */
 const navLinks = [
   { label: 'About', idx: 1 },
-  { label: 'Chokka', idx: 2 },
-  { label: 'Work', idx: 3 },
-  { label: 'Contact', idx: 4 },
+  { label: 'Skills', idx: 2 },
+  { label: 'Chokka', idx: 3 },
+  { label: 'Work', idx: 4 },
+  { label: 'Design', idx: 5 },
+  { label: 'Contact', idx: 6 },
 ];
 
 export default function Navbar({ scrollY, theme, toggleTheme, onNavClick }) {

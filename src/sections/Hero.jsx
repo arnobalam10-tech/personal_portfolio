@@ -67,15 +67,15 @@ export default function Hero({ id }) {
               transition={{ duration: 0.8, delay: 0.4 }}
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: '0.85rem',
-                letterSpacing: '0.3em',
+                fontSize: '0.78rem',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 color: '#9CA3AF',
                 marginBottom: '1.5rem',
                 fontWeight: 500,
               }}
             >
-              DIGITAL MARKETER • VIBE CODER • WEB DEVELOPER
+              GRAPHIC DESIGNER • DIGITAL MARKETER • VIBE CODER • WEB DEVELOPER
             </motion.p>
 
             {/* Desktop Description */}

@@ -204,7 +204,7 @@ export default function Portfolio({ id }) {
               letterSpacing: '-0.03em',
               lineHeight: 1.1,
             }}>
-              Featured Works
+              Website Works
             </h2>
           </div>
 
@@ -233,14 +233,9 @@ export default function Portfolio({ id }) {
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
           gap: '1.5rem',
         }}>
-          {projects.slice(0, 4).map((project, i) => (
+          {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} full={false} />
           ))}
-        </div>
-
-        {/* Featured / full-width last card */}
-        <div style={{ marginTop: '1.5rem' }}>
-          <ProjectCard project={projects[4]} index={4} full={true} />
         </div>
 
       </div>

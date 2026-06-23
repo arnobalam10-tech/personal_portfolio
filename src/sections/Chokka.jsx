@@ -28,14 +28,14 @@ function useCounter(target, duration = 2000, inView) {
   return count;
 }
 
-/* ── Instagram post grid ── */
+/* ── Instagram post grid — pulled from the Chokka design project work ── */
 const igPosts = [
-  { emoji: '🎲', color: ['#0d2a6e','#1a3fa0'] },
-  { emoji: '♟️', color: ['#1a2d80','#2540cc'] },
-  { emoji: '🃏', color: ['#0a1f6e','#1a3090'] },
-  { emoji: '🎯', color: ['#1a348f','#2a4abf'] },
-  { emoji: '🧩', color: ['#0d1f80','#1a2fc0'] },
-  { emoji: '🎪', color: ['#12288a','#1e3aad'] },
+  { color: ['#0d2a6e','#1a3fa0'], img: '09-logo-lockup.webp' },
+  { color: ['#1a2d80','#2540cc'], img: '06-three-boxes-promo.webp' },
+  { color: ['#0a1f6e','#1a3090'], img: '01-tong-cards-flatlay.webp' },
+  { color: ['#1a348f','#2a4abf'], img: '04-sholo-ana-boxes.webp' },
+  { color: ['#0d1f80','#1a2fc0'], img: '02-tong-lifestyle.webp' },
+  { color: ['#12288a','#1e3aad'], img: '05-sholo-ana-sky.webp' },
 ];
 
 export default function Chokka({ id }) {
@@ -45,8 +45,8 @@ export default function Chokka({ id }) {
   const igInView = useInView(igRef, { once: true, margin: '-60px' });
 
   /* Real stats */
-  const gamesCount    = useCounter(678,  2200, counterInView); // Actual games sold
-  const followersCount = useCounter(5346, 2800, igInView);     // Actual followers
+  const gamesCount    = useCounter(1153, 2200, counterInView); // Actual games sold
+  const followersCount = useCounter(5610, 2800, igInView);     // Actual followers
 
   return (
     <section id={id} className="chokka-section">
@@ -216,15 +216,12 @@ export default function Chokka({ id }) {
                     display:'flex', alignItems:'center', justifyContent:'center',
                     fontSize:'1.5rem', overflow:'hidden', position:'relative',
                   }}>
-                    {/* Drop post-1.webp … post-6.webp in public/assets/chokka/ */}
                     <img
-                      src={`/assets/chokka/post-${i+1}.webp`}
-                      alt={`Chokka post ${i+1}`}
+                      src={`/assets/design/chokka/${p.img}`}
+                      alt={`Chokka — ${p.img.replace(/\.webp$/, '').replace(/^\d+-/, '').replace(/-/g, ' ')}`}
                       style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}
                       onError={(e)=>{e.target.style.display='none';}}
                     />
-                    {/* Emoji shown until real image loads */}
-                    <span style={{position:'relative',zIndex:1}}>{p.emoji}</span>
                   </div>
                 ))}
               </div>

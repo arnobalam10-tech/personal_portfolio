@@ -186,9 +186,9 @@ export default function About({ id }) {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {[
-                  { label: 'Work', value: 'Junior Digital Marketing executive in Mortgage Magic - Uk based SaaS platform' },
+                  { label: 'Work', value: 'Junior Digital Marketing Executive @ Mortgage Magic (UK SaaS) — 2025–2026, 6-month internship' },
                   { label: 'Education', value: 'BBA — North South University' },
-                  { label: 'Focus', value: 'Digital Marketing & Web Dev' },
+                  { label: 'Focus', value: 'Marketing, Web Dev & Graphic Design' },
                   { label: 'Mode', value: 'Entrepreneur, Builder, Creator' },
                 ].map(({ label, value }) => (
                   <div key={label} style={{ borderTop: '1px solid var(--gray-border)', paddingTop: '1rem' }}>
@@ -217,7 +217,7 @@ export default function About({ id }) {
                 color: 'var(--text-primary)',
                 lineHeight: 1.7,
               }}>
-                &ldquo;I build. I market. I grow.&rdquo;
+                &ldquo;I build. I market. I design. I grow.&rdquo;
               </p>
             </div>
           </motion.div>

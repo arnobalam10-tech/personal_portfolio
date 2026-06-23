@@ -382,6 +382,118 @@ body {
 }
 
 /* ====================================
+   SKILLS SECTION
+   ==================================== */
+.skills-section {
+  background: #0D0D18;
+  padding: 7rem 0;
+  position: relative;
+}
+
+[data-theme="light"] .skills-section {
+  background: var(--bg-secondary);
+}
+
+.skill-card {
+  padding: 2rem;
+  border-radius: 18px;
+  border: 1px solid var(--gray-border);
+  background: var(--card-bg);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.4s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(59, 91, 255, 0.35);
+}
+
+.skill-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(59, 91, 255, 0.12);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-tag {
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid var(--gray-border);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+}
+
+/* ====================================
+   DESIGN SECTION
+   ==================================== */
+.design-section {
+  background: var(--bg);
+  padding: 8rem 0;
+  position: relative;
+}
+
+.design-tile {
+  display: block;
+  text-decoration: none;
+  cursor: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--gray-border);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.design-tile:hover {
+  transform: translateY(-8px);
+}
+
+.design-tile-face {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.design-tile-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: rgba(0,0,0,0.55);
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.design-tile:hover .design-tile-hint {
+  opacity: 1;
+}
+
+.design-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3rem 2.5rem;
+  border-radius: 18px;
+  border: 1px dashed var(--gray-border);
+  background: var(--card-bg);
+}
+
+/* ====================================
    PORTFOLIO SECTION
    ==================================== */
 .portfolio-section {
