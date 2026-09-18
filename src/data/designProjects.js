@@ -11,6 +11,8 @@ import Nire from '../pages/design/Nire';
 import InFrame from '../pages/design/InFrame';
 import TeamLonthon from '../pages/design/TeamLonthon';
 import ChokkaCaseStudy from '../pages/design/Chokka';
+import BaazarCaseStudy from '../pages/design/Baazar';
+import StudyNexCaseStudy from '../pages/design/StudyNex';
 
 export const designProjects = [
   {
@@ -48,5 +50,23 @@ export const designProjects = [
     logo: '/assets/design/chokka/09-logo-lockup.webp',
     accent: '#3E6B52',
     component: ChokkaCaseStudy,
+  },
+  {
+    slug: 'baazar',
+    title: 'Baazar',
+    category: 'Brand Identity & App Marketing',
+    cover: '/assets/design/baazar/05-every-essential-shelf.png',
+    logo: '/assets/design/baazar/01-logo-mark.png',
+    accent: '#1B5E3C',
+    component: BaazarCaseStudy,
+  },
+  {
+    slug: 'study-nex',
+    title: 'StudyNEX',
+    category: 'Brand Identity & Campaign Design',
+    cover: '/assets/design/study-nex/04-take-your-seat-post.png',
+    logo: '/assets/design/study-nex/01-logo-mark.png',
+    accent: '#5A1220',
+    component: StudyNexCaseStudy,
   },
 ];
