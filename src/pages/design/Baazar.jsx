@@ -50,7 +50,7 @@ export default function BaazarCaseStudy() {
           borderRadius: '14px',
           overflow: 'hidden',
           background: '#E7F0E9',
-          cursor: 'none',
+          cursor: 'zoom-in',
         }}
       >
         {!loaded && (

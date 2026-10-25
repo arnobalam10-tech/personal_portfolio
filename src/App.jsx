@@ -1,43 +1,27 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
-import LoadingScreen from './components/LoadingScreen';
-import CustomCursor from './components/CustomCursor';
-
-import HomePage from './pages/HomePage';
+import WorksPage from './pages/WorksPage';
+import StoryPage from './pages/StoryPage';
 import DesignProjectPage from './pages/DesignProjectPage';
 
-export default function App() {
-  const [loading, setLoading] = useState(true);
-  const [theme, setTheme] = useState('dark');
-
-  /* ---- Loading ---- */
+function ScrollToTop() {
+  const { pathname } = useLocation();
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2600);
-    return () => clearTimeout(timer);
-  }, []);
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
-  /* ---- Theme ---- */
-  const toggleTheme = () => {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    document.documentElement.setAttribute('data-theme', next === 'light' ? 'light' : '');
-  };
-
+export default function App() {
   return (
     <>
-      {loading && <LoadingScreen />}
-      <CustomCursor />
-
+      <ScrollToTop />
       <Routes>
-        <Route
-          path="/"
-          element={<HomePage loading={loading} theme={theme} toggleTheme={toggleTheme} />}
-        />
-        <Route
-          path="/design/:slug"
-          element={<DesignProjectPage theme={theme} toggleTheme={toggleTheme} />}
-        />
+        <Route path="/" element={<WorksPage />} />
+        <Route path="/story" element={<StoryPage />} />
+        <Route path="/design/:slug" element={<DesignProjectPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   );

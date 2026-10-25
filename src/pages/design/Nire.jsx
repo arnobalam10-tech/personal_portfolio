@@ -51,7 +51,7 @@ export default function Nire() {
           borderRadius: '6px',
           overflow: 'hidden',
           background: palette.surface,
-          cursor: 'none',
+          cursor: 'zoom-in',
         }}
       >
         <img

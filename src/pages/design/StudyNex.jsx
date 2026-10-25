@@ -50,7 +50,7 @@ export default function StudyNexCaseStudy() {
           borderRadius: '14px',
           overflow: 'hidden',
           background: '#EFE0DA',
-          cursor: 'none',
+          cursor: 'zoom-in',
         }}
       >
         {!loaded && (

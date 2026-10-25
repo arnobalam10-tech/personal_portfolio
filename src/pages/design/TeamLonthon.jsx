@@ -34,7 +34,7 @@ export default function TeamLonthon() {
           borderRadius: '4px',
           overflow: 'hidden',
           background: palette.greenDeep,
-          cursor: 'none',
+          cursor: 'zoom-in',
         }}
       >
         <img

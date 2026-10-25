@@ -49,7 +49,7 @@ export default function InFrame() {
           borderRadius: '14px',
           overflow: 'hidden',
           background: palette.blueDeep,
-          cursor: 'none',
+          cursor: 'zoom-in',
         }}
       >
         <img

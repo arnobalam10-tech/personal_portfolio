@@ -37,7 +37,7 @@ export default function Lightbox({ src, alt, onClose }) {
               alignItems: 'center',
               justifyContent: 'center',
               color: 'white',
-              cursor: 'none',
+              cursor: 'pointer',
             }}
           >
             <X size={18} />

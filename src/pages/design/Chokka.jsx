@@ -49,7 +49,7 @@ export default function ChokkaCaseStudy() {
           borderRadius: '14px',
           overflow: 'hidden',
           background: '#EAE2D0',
-          cursor: 'none',
+          cursor: 'zoom-in',
         }}
       >
         <img
