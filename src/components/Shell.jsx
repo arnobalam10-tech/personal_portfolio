@@ -13,6 +13,18 @@ export function GlossButton({ href, to, children, className = '' }) {
   return <a href={href} className={`btn-gloss ${className}`}>{inner}</a>;
 }
 
+function openWhatsApp(e) {
+  e.preventDefault();
+  let left = false;
+  const onHide = () => { left = true; };
+  document.addEventListener('visibilitychange', onHide, { once: true });
+  window.addEventListener('blur', onHide, { once: true });
+  window.location.href = contact.whatsappApp;
+  setTimeout(() => {
+    if (!left) window.open(contact.whatsapp, '_blank', 'noopener');
+  }, 1200);
+}
+
 function TopBar() {
   const onStory = useLocation().pathname.startsWith('/story');
   return (
@@ -24,7 +36,7 @@ function TopBar() {
         </nav>
         <Link to="/" className="bar-name">Ashab Alam</Link>
         <div className="bar-right">
-          <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-gloss btn-sm">Let's chat</a>
+          <a href={contact.whatsapp} onClick={openWhatsApp} className="btn-gloss btn-sm">Let's chat</a>
         </div>
       </div>
     </header>
