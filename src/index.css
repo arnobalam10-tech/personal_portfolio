@@ -791,3 +791,33 @@ a { color: inherit; }
   .music { padding: 8px 22px 56px; }
   .music-card { flex-direction: column; align-items: flex-start; gap: 24px; padding: 22px; }
 }
+@media (max-width: 560px) {
+  .music-card { align-items: center; text-align: center; }
+  .music-text { display: flex; flex-direction: column; align-items: center; }
+  .cd { flex-basis: auto; }
+}
+
+/* chokka gallery: storyboard on phones, masonry stays on larger screens */
+.shot-n { display: none; }
+@media (max-width: 560px) {
+  .shots {
+    column-count: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .shot {
+    flex: calc(var(--ar) * 100) 1 calc(var(--ar) * 120px);
+    max-width: calc(var(--ar) * 190px);
+    margin: 0;
+    padding: 5px 5px 7px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .shot img { border-radius: 2px; }
+  .shot figcaption { font-size: 0.64rem; letter-spacing: 0.06em; }
+  .shot-n { display: inline; color: var(--ink-2); margin-right: 6px; font-weight: 500; }
+}

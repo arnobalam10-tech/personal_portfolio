@@ -68,11 +68,11 @@ function Chapter({ n, kicker, title, children, photo, pos, flip, caption, landsc
   );
 }
 
-function Shot({ src, alt, cap }) {
+function Shot({ src, alt, cap, ar, n }) {
   return (
-    <Reveal as="figure" className="shot">
+    <Reveal as="figure" className="shot" style={{ '--ar': ar }}>
       <img src={src} alt={alt} loading="lazy" />
-      <figcaption>{cap}</figcaption>
+      <figcaption><b className="shot-n">{n}</b>{cap}</figcaption>
     </Reveal>
   );
 }
@@ -206,11 +206,11 @@ export default function StoryPage() {
           <span className="hero-shot-cap">Three games, one hand.</span>
         </Reveal>
         <div className="shots">
-          <Shot src="/assets/chokka-ig/launch.jpg" alt="Chokka launches its first original card game, Sholo Ana" cap="The launch post: Chokka's first original card game, Sholo Ana." />
-          <Shot src="/assets/chokka-ig/insights.jpg" alt="Instagram insights showing 574,231 views" cap="574,231 views in 90 days. Not on our bucket list." />
-          <Shot src="/assets/chokka-ig/gamenight.jpg" alt="People playing Chokka card games" cap="Game night, in the wild." />
-          <Shot src="/assets/chokka-ig/cards-table.jpg" alt="Chokka cards laid out on a table" cap="The decks, laid out." />
-          <Shot src="/assets/chokka-ig/gimbal.jpg" alt="Filming content with a gimbal" cap="Behind the content: a phone, a gimbal, a friend." />
+          <Shot src="/assets/chokka-ig/launch.jpg" alt="Chokka launches its first original card game, Sholo Ana" cap="The launch post: Chokka's first original card game, Sholo Ana." ar={0.8} n="01" />
+          <Shot src="/assets/chokka-ig/insights.jpg" alt="Instagram insights showing 574,231 views" cap="574,231 views in 90 days. Not on our bucket list." ar={0.5146} n="02" />
+          <Shot src="/assets/chokka-ig/gamenight.jpg" alt="People playing Chokka card games" cap="Game night, in the wild." ar={0.6047} n="03" />
+          <Shot src="/assets/chokka-ig/cards-table.jpg" alt="Chokka cards laid out on a table" cap="The decks, laid out." ar={0.8047} n="04" />
+          <Shot src="/assets/chokka-ig/gimbal.jpg" alt="Filming content with a gimbal" cap="Behind the content: a phone, a gimbal, a friend." ar={0.5637} n="05" />
         </div>
       </section>
 
