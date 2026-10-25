@@ -16,11 +16,12 @@ function Parallax({ src, alt, pos = '50% 50%', className = '', imgClass, still }
   );
 }
 
-function Reveal({ children, delay = 0, as: Tag = 'div', className }) {
+function Reveal({ children, delay = 0, as: Tag = 'div', className, style }) {
   const M = motion[Tag];
   return (
     <M
       className={className}
+      style={style}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -73,6 +74,40 @@ function Shot({ src, alt, cap }) {
       <img src={src} alt={alt} loading="lazy" />
       <figcaption>{cap}</figcaption>
     </Reveal>
+  );
+}
+
+const boardFrames = [
+  { src: '/assets/story/boys-park.jpg', ar: 4 / 3, alt: 'Six friends posing in a park', cap: 'Serious faces. Mostly.' },
+  { src: '/assets/story/boys-car.jpg', ar: 4 / 3, alt: 'Four friends squeezed into a car', cap: 'Road trip, front-seat selfie.' },
+  { src: '/assets/story/boys-guitar.jpg', ar: 4 / 3, alt: 'Friends on a porch, one playing guitar', cap: 'Guitar hour.' },
+  { src: '/assets/story/sunset.jpg', ar: 739 / 1311, alt: 'Friends on the rocks at sunset', cap: 'Sunset, on the rocks.' },
+  { src: '/assets/story/boys-kurta.jpg', ar: 3 / 4, alt: 'Six friends in kurtas by a pond', cap: 'All dressed up, same crew.' },
+  { src: '/assets/story/boys-night.jpg', ar: 4 / 3, alt: 'Five friends in a dim selfie', cap: 'Lights low, spirits high.' },
+];
+
+function Storyboard() {
+  return (
+    <section className="board-sec">
+      <Reveal><p className="chapter-n">~ <span>Between launches</span></p></Reveal>
+      <Reveal delay={0.08} as="h2" className="display chapter-title wide">
+        Between lectures and launches, I love spending time with the boys.
+      </Reveal>
+      <div className="board">
+        {boardFrames.map((f, i) => (
+          <Reveal
+            as="figure"
+            key={f.src}
+            delay={i * 0.06}
+            className="panel"
+            style={{ flex: `${f.ar * 100} 1 ${f.ar * 150}px`, maxWidth: `${f.ar * 215}px` }}
+          >
+            <img src={f.src} alt={f.alt} loading="lazy" />
+            <figcaption><b>{String(i + 1).padStart(2, '0')}</b> {f.cap}</figcaption>
+          </Reveal>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -137,13 +172,7 @@ export default function StoryPage() {
         <p>I study business at North South University. Am I doing it for any grand reason? Not really. Mostly so I can say I did an undergrad.</p>
       </Chapter>
 
-      <Chapter
-        n="~" kicker="Between launches" flip={false}
-        title="Between lectures and launches, there's always the sea."
-        photo="/assets/story/sunset.jpg" pos="50% 60%" caption="Sunset, with the boys" tall
-      >
-        <p>A break from the screen, a few friends, and a horizon that doesn't need a content calendar.</p>
-      </Chapter>
+      <Storyboard />
 
       <section className="chokka-ch">
         <Reveal><p className="chapter-n">V <span>Chokka</span></p></Reveal>

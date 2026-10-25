@@ -708,3 +708,31 @@ a { color: inherit; }
   text-transform: uppercase;
   color: var(--ink-3);
 }
+
+/* storyboard */
+.board-sec { padding: 72px 48px 80px; border-top: 1px solid var(--line); }
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 36px;
+}
+.panel {
+  margin: 0;
+  padding: 6px 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.panel img { width: 100%; height: auto; display: block; border-radius: 2px; }
+.panel figcaption {
+  margin-top: 7px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.panel figcaption b { color: var(--ink-2); margin-right: 6px; font-weight: 500; }
+@media (max-width: 860px) { .board-sec { padding: 56px 22px 64px; } }
+.board { align-items: flex-start; }
