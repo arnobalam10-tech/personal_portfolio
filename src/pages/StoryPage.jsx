@@ -260,6 +260,7 @@ export default function StoryPage() {
       <section className="stand">
         <h3 className="eyebrow">Where I stand</h3>
         <ul>
+          <li><b>Media Head</b><span>Baazar</span></li>
           <li><b>Founder</b><span>Chokka</span></li>
           <li><b>Junior Digital Marketing Executive</b><span>Mortgage Magic · UK SaaS</span></li>
           <li><b>BBA, for the sake of saying I did one</b><span>North South University</span></li>
