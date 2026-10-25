@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
-import { ArrowUpRight, Clapperboard, LayoutGrid, Shapes, Globe } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { FilmArt, SocialArt, BrandArt, WebArt } from '../components/ServiceArt';
 import Shell, { GlossButton, ContactBlock } from '../components/Shell';
 import { works, brands, contact } from '../data/works';
 
@@ -45,22 +46,22 @@ function Card({ work, index }) {
 
 const services = [
   {
-    icon: Clapperboard,
+    art: FilmArt,
     title: 'Launch videos & motion',
     text: 'Short, sharp videos and reels that explain your product in seconds and are cut for launch day.',
   },
   {
-    icon: LayoutGrid,
+    art: SocialArt,
     title: 'Social content',
     text: 'Posts, carousels and stories built as one system, so your launch week looks like a real brand.',
   },
   {
-    icon: Shapes,
+    art: BrandArt,
     title: 'Brand identity',
     text: 'Logo, type, colour and packaging delivered as one handoff your team can actually follow.',
   },
   {
-    icon: Globe,
+    art: WebArt,
     title: 'Websites & launch pages',
     text: 'Fast sites and stores, built and shipped with the analytics already wired in.',
   },
@@ -123,9 +124,9 @@ export default function WorksPage() {
       <section className="services">
         <h2 className="display section-title">Everything a launch needs, in one place</h2>
         <div className="services-grid">
-          {services.map(({ icon: Icon, title, text }) => (
+          {services.map(({ art: Art, title, text }) => (
             <div className="service" key={title}>
-              <span className="service-icon"><Icon size={22} strokeWidth={1.6} /></span>
+              <Art />
               <h3>{title}</h3>
               <p>{text}</p>
             </div>

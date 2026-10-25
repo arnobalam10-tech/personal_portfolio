@@ -826,3 +826,60 @@ a { color: inherit; }
   .cap-full { display: none; }
   .cap-short { display: inline; }
 }
+
+/* service artwork */
+.service-art { position: relative; height: 100px; margin-bottom: 30px; }
+.service-art svg { display: block; filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.18)); }
+.app-icon {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  border-radius: 17px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.55), inset 0 -2px 5px rgba(0, 0, 0, 0.14), 0 12px 20px -8px rgba(0, 0, 0, 0.45);
+}
+.app-icon img { width: 30px; height: 30px; display: block; }
+.grid-tile {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 84px;
+  height: 84px;
+  border-radius: 22px;
+  background: linear-gradient(#ffffff, #f1f1f3);
+  border: 1px solid rgba(12, 12, 14, 0.12);
+  box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.grid-tile svg { position: absolute; inset: 0; filter: none; }
+.grid-tile img { position: absolute; inset: 14px; width: 56px; height: 56px; object-fit: cover; border-radius: 50%; }
+.swatch {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 14px -6px rgba(0, 0, 0, 0.45);
+}
+.browser {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 100px;
+  height: 76px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(12, 12, 14, 0.14);
+  box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.browser-bar { display: flex; gap: 4px; padding: 7px 9px; background: #f3f3f5; border-bottom: 1px solid rgba(12, 12, 14, 0.08); }
+.browser-bar i { width: 6px; height: 6px; border-radius: 50%; background: #c9c9cf; }
+.browser-bar i:first-child { background: #ff6159; }
+.browser-bar i:nth-child(2) { background: #ffbd2e; }
+.browser-bar i:nth-child(3) { background: #28c93f; }
+.browser-body { display: block; padding: 10px; }
+.browser-body b { display: block; height: 6px; margin-bottom: 6px; border-radius: 3px; background: #0c0c0e; }
+.browser-body em { display: block; width: 36px; height: 14px; margin-top: 10px; border-radius: 5px; background: var(--accent); }
