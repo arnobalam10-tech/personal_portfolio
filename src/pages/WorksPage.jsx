@@ -1,30 +1,12 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { FilmArt, SocialArt, BrandArt, WebArt } from '../components/ServiceArt';
 import Shell, { GlossButton, ContactBlock } from '../components/Shell';
 import { works, brands, contact } from '../data/works';
 
 const ease = [0.25, 0.46, 0.45, 0.94];
-
-function Sun() {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 320], [0, -40]);
-  const scale = useTransform(scrollY, [0, 320], [1, 0.8]);
-  const opacity = useTransform(scrollY, [0, 80, 340], [1, 1, 0]);
-  return (
-    <motion.div
-      className="sun"
-      aria-hidden="true"
-      initial={{ opacity: 0, y: 90 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.6, ease }}
-    >
-      <motion.div className="sun-body" style={{ y, scale, opacity }} />
-    </motion.div>
-  );
-}
 
 function Card({ work, index }) {
   const ref = useRef(null);
@@ -92,7 +74,7 @@ export default function WorksPage() {
   return (
     <Shell>
       <section className="hero">
-        <Sun />
+        <div className="hero-glow" aria-hidden="true" />
         <motion.h1
           className="display hero-title"
           initial={{ opacity: 0, y: 24 }}

@@ -184,6 +184,17 @@ a { color: inherit; }
   gap: 30px;
   border-bottom: 1px solid var(--line);
 }
+.hero-glow {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 480px;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 52% 62% at 50% -8%, rgba(59, 91, 255, 0.62), rgba(110, 140, 255, 0.28) 48%, transparent 74%),
+    radial-gradient(ellipse 28% 40% at 50% -4%, rgba(255, 255, 255, 0.5), transparent 70%);
+  mask-image: linear-gradient(#000 55%, transparent);
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+}
 .hero-title {
   position: relative;
   max-width: 940px;
@@ -872,35 +883,3 @@ a { color: inherit; }
 .browser-body { display: block; padding: 10px; }
 .browser-body b { display: block; height: 6px; margin-bottom: 6px; border-radius: 3px; background: #0c0c0e; }
 .browser-body em { display: block; width: 36px; height: 14px; margin-top: 10px; border-radius: 5px; background: var(--accent); }
-
-/* scroll-driven sun */
-.site { --sun-core: #ffc61a; --sun-mid: #ffe84a; --sun-soft: rgba(255, 244, 120, 0.5); --sun-haze: rgba(255, 252, 190, 0.22); }
-.sun {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 520px;
-  pointer-events: none;
-  overflow: visible;
-}
-.sun-body {
-  position: absolute;
-  inset: 0;
-  transform-origin: 50% 0;
-  background:
-    radial-gradient(ellipse 54% 66% at 50% 0%, var(--sun-core) 0%, var(--sun-mid) 34%, var(--sun-soft) 62%, var(--sun-haze) 82%, transparent 100%),
-    radial-gradient(ellipse 100% 78% at 50% 0%, rgba(255, 246, 150, 0.4), transparent 78%);
-  mask-image: linear-gradient(#000 52%, transparent 100%);
-  -webkit-mask-image: linear-gradient(#000 52%, transparent 100%);
-  will-change: transform, opacity;
-}
-.sun-body::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(12, 12, 14, 0.35) 0.6px, transparent 0.9px);
-  background-size: 11px 13px;
-  opacity: 0.12;
-  mask-image: radial-gradient(ellipse 60% 70% at 50% 0%, #000, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 0%, #000, transparent 85%);
-}
-@media (prefers-reduced-motion: reduce) { .sun-body { transform: none !important; } }
