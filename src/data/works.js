@@ -59,8 +59,8 @@ export const works = [
     title: 'Chokka Shop',
     tags: ['E-commerce', 'Vibe coded'],
     blurb: 'Ecommerce site with a full admin panel, analytics and 3D card animations on the front end.',
-    cover: '/assets/projects/project-1.webp',
-    ratio: '4 / 3',
+    cover: '/assets/covers/chokka-shop.jpg',
+    ratio: '4 / 5',
     tint: '#DDE3F7',
   },
   {

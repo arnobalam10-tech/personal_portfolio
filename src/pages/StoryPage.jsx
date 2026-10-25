@@ -5,13 +5,13 @@ import { contact } from '../data/works';
 
 const ease = [0.25, 0.46, 0.45, 0.94];
 
-function Parallax({ src, alt, pos = '50% 50%', className = '' }) {
+function Parallax({ src, alt, pos = '50% 50%', className = '', imgClass, still }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], ['-7%', '7%']);
   return (
     <div ref={ref} className={`px ${className}`}>
-      <motion.img src={src} alt={alt} style={{ y, objectPosition: pos }} loading="lazy" />
+      <motion.img src={src} alt={alt} className={`${imgClass || ''} ${still ? 'still' : ''}`} style={still ? { objectPosition: pos } : { y, objectPosition: pos }} loading="lazy" />
     </div>
   );
 }
@@ -51,11 +51,11 @@ function CountUp({ to, suffix = '', label, group = true }) {
   );
 }
 
-function Chapter({ n, kicker, title, children, photo, pos, flip, caption }) {
+function Chapter({ n, kicker, title, children, photo, pos, flip, caption, landscape, imgClass }) {
   return (
-    <section className={`chapter ${flip ? 'flip' : ''}`}>
+    <section className={`chapter ${flip ? 'flip' : ''} ${landscape ? 'landscape' : ''}`}>
       <Reveal className="chapter-photo">
-        <Parallax src={photo} alt={caption} pos={pos} />
+        <Parallax src={photo} alt={caption} pos={pos} imgClass={imgClass} />
         <span className="chapter-cap">{caption}</span>
       </Reveal>
       <div className="chapter-text">
@@ -68,12 +68,10 @@ function Chapter({ n, kicker, title, children, photo, pos, flip, caption }) {
 }
 
 const strip = [
+  { src: '/assets/story/family-00.jpg', alt: 'Family, Eid day' },
   { src: '/assets/story/04.jpg', alt: 'On the beach' },
-  { src: '/assets/story/16.jpg', alt: 'Golden hour' },
+  { src: '/assets/story/family-20.jpg', alt: 'With the little ones' },
   { src: '/assets/story/17.jpg', alt: 'Sea and sky' },
-  { src: '/assets/story/15.jpg', alt: 'Walking the green path' },
-  { src: '/assets/story/23.jpg', alt: 'Evening light' },
-  { src: '/assets/story/19.jpg', alt: 'Against the brick wall' },
 ];
 
 export default function StoryPage() {
@@ -101,7 +99,7 @@ export default function StoryPage() {
       <Chapter
         n="I" kicker="The city" flip={false}
         title="I'm from Chattogram, the port city."
-        photo="/assets/story/02.jpg" pos="50% 40%" caption="Chattogram, by the water"
+        photo="/assets/story/22.jpg" pos="50% 50%" caption="Chattogram, wide open" imgClass="trim-left"
       >
         <p>A city built on ships, trade and people who make things happen. It's where I learned that things don't just appear. Someone has to build them.</p>
       </Chapter>
@@ -109,17 +107,17 @@ export default function StoryPage() {
       <Chapter
         n="II" kicker="At home" flip
         title="Raised in a business family."
-        photo="/assets/story/09.jpg" pos="50% 30%" caption="Home ground"
+        photo="/assets/story/family.jpg" pos="50% 50%" caption="Family, at the table" landscape
       >
         <p>Growing up around business, building something of my own never felt like a dream. It felt like the next step.</p>
       </Chapter>
 
       <Chapter
-        n="III" kicker="Age nine" flip={false}
-        title="My first business, at nine."
-        photo="/assets/story/05.jpg" pos="50% 30%" caption="Still smiling about it"
+        n="III" kicker="Grade nine" flip={false}
+        title="My first business, at fifteen."
+        photo="/assets/story/friends.jpg" pos="50% 40%" caption="Friends, then and now"
       >
-        <p>Somewhere between the first idea and the first sale, I found the thing I've been chasing ever since: building a brand, and launching it.</p>
+        <p>In grade nine I started my first business. Somewhere between the first idea and the first sale, I found the thing I've been chasing ever since: building a brand, and launching it.</p>
       </Chapter>
 
       <section className="chokka-ch">
@@ -140,8 +138,18 @@ export default function StoryPage() {
         </div>
         <div className="chokka-shots">
           <Parallax src="/assets/design/chokka/06-three-boxes-promo.webp" alt="Chokka's three game boxes" className="wide-shot" />
-          <Parallax src="/assets/design/chokka/02-tong-lifestyle.webp" alt="People playing Tong" />
-          <Parallax src="/assets/design/chokka/03-tong-promo-fan.webp" alt="A fan of Tong cards" />
+          <figure>
+            <Parallax src="/assets/chokka-ig/launch.jpg" alt="Chokka launches its first original card game, Sholo Ana" still />
+            <figcaption>The launch post: Chokka's first original card game, Sholo Ana.</figcaption>
+          </figure>
+          <figure>
+            <Parallax src="/assets/chokka-ig/boxes-in-hand.jpg" alt="Chokka's games held in hand" />
+            <figcaption>Three games, one hand.</figcaption>
+          </figure>
+          <figure>
+            <Parallax src="/assets/chokka-ig/cards-table.jpg" alt="Chokka cards laid out on a table" />
+            <figcaption>Game night, set up.</figcaption>
+          </figure>
         </div>
       </section>
 
