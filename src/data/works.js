@@ -154,6 +154,7 @@ export const brands = [
 
 export const contact = {
   email: 'arnob.alam10@gmail.com',
+  whatsapp: 'https://wa.me/8801322654646',
   socials: [
     { label: 'Instagram', href: 'https://www.instagram.com/alampost._/' },
     { label: 'Chokka', href: 'https://www.instagram.com/chokka.co/' },

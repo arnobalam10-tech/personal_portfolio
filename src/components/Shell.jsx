@@ -24,7 +24,7 @@ function TopBar() {
         </nav>
         <Link to="/" className="bar-name">Ashab Alam</Link>
         <div className="bar-right">
-          <a href={`mailto:${contact.email}`} className="btn-gloss btn-sm">Let's chat</a>
+          <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-gloss btn-sm">Let's chat</a>
         </div>
       </div>
     </header>
