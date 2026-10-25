@@ -692,3 +692,19 @@ a { color: inherit; }
 }
 @media (max-width: 560px) { .shots { column-count: 1; } }
 .chapter-photo::after { display: none; }
+
+.hero-shot { display: flex; flex-direction: column; align-items: center; margin: 0 0 36px; }
+.hero-shot img {
+  width: min(100%, calc(64vh * 1.2427));
+  aspect-ratio: 1152 / 927;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+.hero-shot-cap {
+  margin-top: 10px;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}

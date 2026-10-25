@@ -161,11 +161,13 @@ export default function StoryPage() {
           <CountUp to={1000} suffix="+" label="game boxes sold" />
           <CountUp to={2023} group={false} label="founded" />
         </div>
-        <Parallax src="/assets/design/chokka/06-three-boxes-promo.webp" alt="Chokka's three game boxes" className="wide-shot-solo" />
+        <Reveal className="hero-shot">
+          <img src="/assets/chokka-ig/boxes-in-hand.jpg" alt="Chokka's three games held in hand" loading="lazy" />
+          <span className="hero-shot-cap">Three games, one hand.</span>
+        </Reveal>
         <div className="shots">
           <Shot src="/assets/chokka-ig/launch.jpg" alt="Chokka launches its first original card game, Sholo Ana" cap="The launch post: Chokka's first original card game, Sholo Ana." />
           <Shot src="/assets/chokka-ig/insights.jpg" alt="Instagram insights showing 574,231 views" cap="574,231 views in 90 days. Not on our bucket list." />
-          <Shot src="/assets/chokka-ig/boxes-in-hand.jpg" alt="Chokka's games held in hand" cap="Three games, one hand." />
           <Shot src="/assets/chokka-ig/gamenight.jpg" alt="People playing Chokka card games" cap="Game night, in the wild." />
           <Shot src="/assets/chokka-ig/cards-table.jpg" alt="Chokka cards laid out on a table" cap="The decks, laid out." />
           <Shot src="/assets/chokka-ig/gimbal.jpg" alt="Filming content with a gimbal" cap="Behind the content: a phone, a gimbal, a friend." />
