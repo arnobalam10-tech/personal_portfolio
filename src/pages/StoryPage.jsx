@@ -77,6 +77,26 @@ function Shot({ src, alt, cap }) {
   );
 }
 
+const SPOTIFY_TRACK = 'https://open.spotify.com/track/6HSXNV0b4M4cLJ7ljgVVeh';
+
+function Music() {
+  return (
+    <section className="music">
+      <Reveal className="music-card">
+        <a className="cd" href={SPOTIFY_TRACK} target="_blank" rel="noopener noreferrer" aria-label="Open Knockin' on Heaven's Door on Spotify">
+          <img src="/assets/story/knockin-cover.jpg" alt="Pat Garrett & Billy the Kid soundtrack cover" loading="lazy" />
+        </a>
+        <div className="music-text">
+          <p className="eyebrow">Oh, I love music too</p>
+          <h3 className="display">Here's a song suggestion. Hope you like it.</h3>
+          <p className="music-by">Knockin' on Heaven's Door · Bob Dylan</p>
+          <a className="btn-gloss" href={SPOTIFY_TRACK} target="_blank" rel="noopener noreferrer">Play on Spotify</a>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
 const boardFrames = [
   { src: '/assets/story/boys-park.jpg', ar: 4 / 3, alt: 'Six friends posing in a park', cap: 'Serious faces. Mostly.' },
   { src: '/assets/story/boys-car.jpg', ar: 4 / 3, alt: 'Four friends squeezed into a car', cap: 'Road trip, front-seat selfie.' },
@@ -158,24 +178,15 @@ export default function StoryPage() {
 
       <Chapter
         n="III" kicker="Grade nine" flip={false}
-        title="My first business, at fifteen."
+        title="My first business, at fifteen: Poster Junkies."
         photo="/assets/story/friends-collage.jpg" pos="50% 40%" caption="The people who were there for it" tall
       >
-        <p>In grade nine I started my first business. Somewhere between the first idea and the first sale, I found the thing I've been chasing ever since: building a brand, and launching it.</p>
+        <p>In grade nine I started Poster Junkies, my first business. Somewhere between the first poster and the first sale, I found the thing I've been chasing ever since: building a brand, and launching it.</p>
+        <p className="more">I've built many more brands since, like Frame Korbo, PolaroidsBD and many more.</p>
       </Chapter>
-
-      <Chapter
-        n="IV" kicker="The degree" flip
-        title="Oh, and I'm a BBA student."
-        photo="/assets/story/class.jpg" pos="50% 40%" caption="Pitching in class, apparently" tall
-      >
-        <p>I study business at North South University. Am I doing it for any grand reason? Not really. Mostly so I can say I did an undergrad.</p>
-      </Chapter>
-
-      <Storyboard />
 
       <section className="chokka-ch">
-        <Reveal><p className="chapter-n">V <span>Chokka</span></p></Reveal>
+        <Reveal><p className="chapter-n">IV <span>Chokka</span></p></Reveal>
         <Reveal delay={0.08} as="h2" className="display chapter-title wide">
           Then I wanted to do something new. So I built Chokka.
         </Reveal>
@@ -203,11 +214,23 @@ export default function StoryPage() {
         </div>
       </section>
 
+      <Music />
+
+      <Chapter
+        n="V" kicker="The degree" flip
+        title="Oh, and I'm a BBA student."
+        photo="/assets/story/class.jpg" pos="50% 40%" caption="Pitching in class, apparently" tall
+      >
+        <p>I study business at North South University. Am I doing it for any grand reason? Not really. Mostly so I can say I did an undergrad.</p>
+      </Chapter>
+
+      <Storyboard />
+
       <section className="s-final">
         <Parallax src="/assets/story/21.jpg" alt="Black and white portrait" pos="50% 35%" className="s-final-img" />
         <div className="s-final-shade" />
         <div className="s-final-copy">
-          <Reveal><p className="chapter-n">V <span>Now</span></p></Reveal>
+          <Reveal><p className="chapter-n">VI <span>Now</span></p></Reveal>
           <Reveal delay={0.08} as="h2" className="display chapter-title wide">
             Today I take that launch playbook to other founders.
           </Reveal>

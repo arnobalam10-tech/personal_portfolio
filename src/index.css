@@ -736,3 +736,58 @@ a { color: inherit; }
 .panel figcaption b { color: var(--ink-2); margin-right: 6px; font-weight: 500; }
 @media (max-width: 860px) { .board-sec { padding: 56px 22px 64px; } }
 .board { align-items: flex-start; }
+
+/* music */
+.chapter-text p.more { margin-top: 14px; color: var(--ink); }
+.music { padding: 8px 48px 72px; }
+.music-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 26px 32px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: radial-gradient(120% 140% at 0% 50%, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+}
+.cd {
+  position: relative;
+  flex: 0 0 190px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  animation: cd-spin 9s linear infinite;
+  box-shadow: 0 22px 44px -10px rgba(0, 0, 0, 0.7), inset 0 0 0 2px rgba(255, 255, 255, 0.18);
+}
+.cd:hover { animation-duration: 3.5s; }
+.cd img { width: 100%; height: 100%; display: block; border-radius: 50%; object-fit: cover; }
+.cd::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  background: conic-gradient(from 20deg, transparent 0%, rgba(255, 255, 255, 0.5) 8%, rgba(110, 190, 255, 0.22) 17%, transparent 30%, rgba(255, 150, 255, 0.3) 52%, transparent 66%, rgba(255, 255, 255, 0.45) 82%, transparent 94%);
+}
+.cd::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 17%;
+  height: 17%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #09090b;
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.32), 0 0 0 8px rgba(0, 0, 0, 0.45);
+}
+@keyframes cd-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .cd { animation: none; } }
+.music-text .eyebrow { margin-bottom: 8px; }
+.music-text h3 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin-bottom: 4px; }
+.music-by { color: var(--ink-3); font-size: 0.92rem; margin-bottom: 16px; }
+@media (max-width: 560px) {
+  .music { padding: 8px 22px 56px; }
+  .music-card { flex-direction: column; align-items: flex-start; gap: 24px; padding: 22px; }
+}
