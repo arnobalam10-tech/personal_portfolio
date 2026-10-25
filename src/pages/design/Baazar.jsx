@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Lightbox from '../../components/Lightbox';
+import { fitWidth } from '../../lib/fit';
 
 const BASE = '/assets/design/baazar';
 
@@ -45,7 +46,8 @@ export default function BaazarCaseStudy() {
         onClick={() => setLightbox({ src: fullSrc, alt })}
         style={{
           position: 'relative',
-          width: '100%',
+          width: fitWidth(ratio),
+          margin: '0 auto',
           aspectRatio: ratio,
           borderRadius: '14px',
           overflow: 'hidden',
