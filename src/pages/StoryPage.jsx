@@ -68,11 +68,15 @@ function Chapter({ n, kicker, title, children, photo, pos, flip, caption, landsc
   );
 }
 
-function Shot({ src, alt, cap, ar, n }) {
+function Shot({ src, alt, cap, short, pos = '50% 50%', n }) {
   return (
-    <Reveal as="figure" className="shot" style={{ '--ar': ar }}>
+    <Reveal as="figure" className="shot" style={{ '--pos': pos }}>
       <img src={src} alt={alt} loading="lazy" />
-      <figcaption><b className="shot-n">{n}</b>{cap}</figcaption>
+      <figcaption>
+        <b className="shot-n">{n}</b>
+        <span className="cap-full">{cap}</span>
+        <span className="cap-short">{short}</span>
+      </figcaption>
     </Reveal>
   );
 }
@@ -206,11 +210,11 @@ export default function StoryPage() {
           <span className="hero-shot-cap">Three games, one hand.</span>
         </Reveal>
         <div className="shots">
-          <Shot src="/assets/chokka-ig/launch.jpg" alt="Chokka launches its first original card game, Sholo Ana" cap="The launch post: Chokka's first original card game, Sholo Ana." ar={0.8} n="01" />
-          <Shot src="/assets/chokka-ig/insights.jpg" alt="Instagram insights showing 574,231 views" cap="574,231 views in 90 days. Not on our bucket list." ar={0.5146} n="02" />
-          <Shot src="/assets/chokka-ig/gamenight.jpg" alt="People playing Chokka card games" cap="Game night, in the wild." ar={0.6047} n="03" />
-          <Shot src="/assets/chokka-ig/cards-table.jpg" alt="Chokka cards laid out on a table" cap="The decks, laid out." ar={0.8047} n="04" />
-          <Shot src="/assets/chokka-ig/gimbal.jpg" alt="Filming content with a gimbal" cap="Behind the content: a phone, a gimbal, a friend." ar={0.5637} n="05" />
+          <Shot n="01" src="/assets/chokka-ig/launch.jpg" alt="Chokka launches its first original card game, Sholo Ana" cap="The launch post: Chokka's first original card game, Sholo Ana." short="The launch post" />
+          <Shot n="02" src="/assets/chokka-ig/insights.jpg" alt="Instagram insights showing 574,231 views" cap="574,231 views in 90 days. Not on our bucket list." short="574,231 views" pos="50% 22%" />
+          <Shot n="03" src="/assets/chokka-ig/gamenight.jpg" alt="People playing Chokka card games" cap="Game night, in the wild." short="Game night" pos="50% 40%" />
+          <Shot n="04" src="/assets/chokka-ig/cards-table.jpg" alt="Chokka cards laid out on a table" cap="The decks, laid out." short="The decks" />
+          <Shot n="05" src="/assets/chokka-ig/gimbal.jpg" alt="Filming content with a gimbal" cap="Behind the content: a phone, a gimbal, a friend." short="On set" pos="50% 30%" />
         </div>
       </section>
 
