@@ -16,7 +16,7 @@ function Card({ work, index }) {
   const media = (
     <>
       <div className="card-media" style={{ aspectRatio: work.ratio, background: work.tint }}>
-        <img src={work.cover} alt={`${work.title} cover`} loading="lazy" />
+        <img src={work.cover} alt={`${work.title} cover`} loading="lazy" decoding="async" />
         <span className="card-arrow" aria-hidden="true"><ArrowUpRight size={16} /></span>
         <div className="pills">
           <span className="pill">{work.title}</span>
@@ -114,7 +114,7 @@ export default function WorksPage() {
         <div className="brands-grid">
           {brands.map((b) => (
             <div className="brand-cell" key={b.name}>
-              {b.logo && <img src={b.logo} alt="" loading="lazy" />}
+              {b.logo && <img src={b.logo} alt="" loading="lazy" decoding="async" />}
               <span>{b.name}</span>
             </div>
           ))}

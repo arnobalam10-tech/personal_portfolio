@@ -79,7 +79,7 @@ export default function BaazarCaseStudy() {
         <img
           src={fullSrc}
           alt={alt}
-          loading="lazy"
+          loading="lazy" decoding="async"
           onLoad={() => setLoaded(true)}
           style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: fit,
@@ -125,9 +125,9 @@ export default function BaazarCaseStudy() {
           }}
         >
           <img
-            src={`${BASE}/01-logo-mark.png`}
+            src={`${BASE}/01-logo-mark.webp`}
             alt="Baazar logo mark"
-            loading="lazy"
+            loading="lazy" decoding="async"
             onLoad={(e) => { e.target.style.opacity = 1; }}
             style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0, transition: 'opacity 0.5s ease' }}
             onError={(e) => { e.target.style.display = 'none'; }}
@@ -205,7 +205,7 @@ export default function BaazarCaseStudy() {
           </p>
 
           <div style={{ maxWidth: '360px', margin: '0 auto' }}>
-            <Frame src="01-logo-mark.png" alt="Baazar logo mark" ratio="1/1" index={0} fit="contain" />
+            <Frame src="01-logo-mark.webp" alt="Baazar logo mark" ratio="1/1" index={0} fit="contain" />
           </div>
         </div>
       </section>
@@ -240,7 +240,7 @@ export default function BaazarCaseStudy() {
           </p>
 
           <div style={{ maxWidth: '420px', margin: '0 auto' }}>
-            <Frame src="02-app-launch-post.png" alt="Baazar app is now live launch post" ratio="4/5" index={0} />
+            <Frame src="02-app-launch-post.webp" alt="Baazar app is now live launch post" ratio="4/5" index={0} />
           </div>
         </div>
       </section>
@@ -270,8 +270,8 @@ export default function BaazarCaseStudy() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '1.75rem',
           }}>
-            <Frame src="03-beef-cuts-carousel.png" alt="Baazar know your cut — beef cuts carousel post" ratio="4/5" index={0} />
-            <Frame src="04-weekly-deals-post.png" alt="Baazar fresh deals and offers every week ad" ratio="4/5" index={1} />
+            <Frame src="03-beef-cuts-carousel.webp" alt="Baazar know your cut — beef cuts carousel post" ratio="4/5" index={0} />
+            <Frame src="04-weekly-deals-post.webp" alt="Baazar fresh deals and offers every week ad" ratio="4/5" index={1} />
           </div>
         </div>
       </section>
@@ -297,7 +297,7 @@ export default function BaazarCaseStudy() {
           </p>
 
           <div style={{ maxWidth: '520px', margin: '0 auto' }}>
-            <Frame src="05-every-essential-shelf.png" alt="Baazar one order every essential sorted — shelf illustration" ratio="1/1" index={0} />
+            <Frame src="05-every-essential-shelf.webp" alt="Baazar one order every essential sorted — shelf illustration" ratio="1/1" index={0} />
           </div>
         </div>
       </section>
@@ -322,8 +322,8 @@ export default function BaazarCaseStudy() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '1.75rem',
           }}>
-            <Frame src="06-brand-lifestyle-pocket.png" alt="Baazar fresh halal groceries in one click — lifestyle ad" ratio="4/5" index={0} />
-            <Frame src="07-delivery-fee-tiers.jpeg" alt="Baazar shop more save more — delivery fee tiers ad" ratio="4/5" index={1} />
+            <Frame src="06-brand-lifestyle-pocket.webp" alt="Baazar fresh halal groceries in one click — lifestyle ad" ratio="4/5" index={0} />
+            <Frame src="07-delivery-fee-tiers.webp" alt="Baazar shop more save more — delivery fee tiers ad" ratio="4/5" index={1} />
           </div>
         </div>
       </section>

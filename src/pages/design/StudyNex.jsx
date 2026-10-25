@@ -78,7 +78,7 @@ export default function StudyNexCaseStudy() {
         <img
           src={fullSrc}
           alt={alt}
-          loading="lazy"
+          loading="lazy" decoding="async"
           onLoad={() => setLoaded(true)}
           style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: fit,
@@ -233,7 +233,7 @@ export default function StudyNexCaseStudy() {
             half-second scroll.
           </p>
 
-          <Frame src="04-take-your-seat-post.png" alt="StudyNEX it's time to take your seat — spotlight chair ad" ratio="4/5" index={0} />
+          <Frame src="04-take-your-seat-post.webp" alt="StudyNEX it's time to take your seat — spotlight chair ad" ratio="4/5" index={0} />
 
           <div style={{
             display: 'grid',
@@ -241,8 +241,8 @@ export default function StudyNexCaseStudy() {
             gap: '1.75rem',
             marginTop: '1.75rem',
           }}>
-            <Frame src="03-ambition-future-puzzle.png" alt="StudyNEX we connect the gap between your ambition and your future — puzzle piece ad" ratio="4/5" index={1} />
-            <Frame src="05-build-pathways-post.png" alt="StudyNEX we build pathways that build your future — paper plane ad" ratio="4/5" index={2} />
+            <Frame src="03-ambition-future-puzzle.webp" alt="StudyNEX we connect the gap between your ambition and your future — puzzle piece ad" ratio="4/5" index={1} />
+            <Frame src="05-build-pathways-post.webp" alt="StudyNEX we build pathways that build your future — paper plane ad" ratio="4/5" index={2} />
           </div>
         </div>
       </section>
@@ -272,8 +272,8 @@ export default function StudyNexCaseStudy() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '1.75rem',
           }}>
-            <Frame src="07-signpost-pathway-post.png" alt="StudyNEX every pathway for your future — signpost ad" ratio="4/5" index={0} />
-            <Frame src="02-folder-tabs-post.png" alt="StudyNEX your next step gives you more than a degree — folder tabs ad" ratio="4/5" index={1} />
+            <Frame src="07-signpost-pathway-post.webp" alt="StudyNEX every pathway for your future — signpost ad" ratio="4/5" index={0} />
+            <Frame src="02-folder-tabs-post.webp" alt="StudyNEX your next step gives you more than a degree — folder tabs ad" ratio="4/5" index={1} />
           </div>
         </div>
       </section>
@@ -299,7 +299,7 @@ export default function StudyNexCaseStudy() {
           </p>
 
           <div style={{ maxWidth: '420px', margin: '0 auto' }}>
-            <Frame src="06-business-times-post.png" alt="StudyNEX where is the best study pathway consultancy — business times meme ad" ratio="4/5" index={0} />
+            <Frame src="06-business-times-post.webp" alt="StudyNEX where is the best study pathway consultancy — business times meme ad" ratio="4/5" index={0} />
           </div>
         </div>
       </section>

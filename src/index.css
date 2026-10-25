@@ -17,14 +17,14 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { overflow-x: clip; }
+@media (hover: hover) { html { scroll-behavior: smooth; } }
 body {
   font-family: var(--sans);
   background: var(--page);
   color: var(--ink);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 img { max-width: 100%; }
 a { color: inherit; }
@@ -883,3 +883,16 @@ a { color: inherit; }
 .browser-body { display: block; padding: 10px; }
 .browser-body b { display: block; height: 6px; margin-bottom: 6px; border-radius: 3px; background: #0c0c0e; }
 .browser-body em { display: block; width: 36px; height: 14px; margin-top: 10px; border-radius: 5px; background: var(--accent); }
+
+/* ---- smooth scrolling on phones ---- */
+.s-hero { height: calc(100svh - var(--bar)); }
+.chapter .chapter-photo .px { width: min(100%, calc(70svh * var(--r))); }
+@media (max-width: 860px) {
+  .bar { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(255, 255, 255, 0.97); }
+  .site[data-tone='dark'] .bar { background: rgba(9, 9, 11, 0.97); }
+  .px img { top: 0; height: 100%; }
+  .s-hero-img { animation: none; }
+  .cd::before { mix-blend-mode: normal; opacity: 0.5; }
+  .card:hover { transform: none; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04); }
+  .card:hover .card-media img { transform: none; }
+}

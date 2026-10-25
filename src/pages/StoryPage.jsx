@@ -9,9 +9,10 @@ function Parallax({ src, alt, pos = '50% 50%', className = '', imgClass, still }
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], ['-7%', '7%']);
+  const small = typeof window !== 'undefined' && window.matchMedia('(max-width: 860px)').matches;
   return (
     <div ref={ref} className={`px ${className}`}>
-      <motion.img src={src} alt={alt} className={`${imgClass || ''} ${still ? 'still' : ''}`} style={still ? { objectPosition: pos } : { y, objectPosition: pos }} loading="lazy" />
+      <motion.img src={src} alt={alt} className={`${imgClass || ''} ${still ? 'still' : ''}`} style={still || small ? { objectPosition: pos } : { y, objectPosition: pos }} loading="lazy" decoding="async" />
     </div>
   );
 }
@@ -71,7 +72,7 @@ function Chapter({ n, kicker, title, children, photo, pos, flip, caption, landsc
 function Shot({ src, alt, cap, short, pos = '50% 50%', n }) {
   return (
     <Reveal as="figure" className="shot" style={{ '--pos': pos }}>
-      <img src={src} alt={alt} loading="lazy" />
+      <img src={src} alt={alt} loading="lazy" decoding="async" />
       <figcaption>
         <b className="shot-n">{n}</b>
         <span className="cap-full">{cap}</span>
@@ -88,7 +89,7 @@ function Music() {
     <section className="music">
       <Reveal className="music-card">
         <a className="cd" href={SPOTIFY_TRACK} target="_blank" rel="noopener noreferrer" aria-label="Open Knockin' on Heaven's Door on Spotify">
-          <img src="/assets/story/knockin-cover.jpg" alt="Pat Garrett & Billy the Kid soundtrack cover" loading="lazy" />
+          <img src="/assets/story/knockin-cover.jpg" alt="Pat Garrett & Billy the Kid soundtrack cover" loading="lazy" decoding="async" />
         </a>
         <div className="music-text">
           <p className="eyebrow">Oh, I love music too</p>
@@ -126,7 +127,7 @@ function Storyboard() {
             className="panel"
             style={{ flex: `${f.ar * 100} 1 ${f.ar * 150}px`, maxWidth: `${f.ar * 215}px` }}
           >
-            <img src={f.src} alt={f.alt} loading="lazy" />
+            <img src={f.src} alt={f.alt} loading="lazy" decoding="async" />
             <figcaption><b>{String(i + 1).padStart(2, '0')}</b> {f.cap}</figcaption>
           </Reveal>
         ))}
@@ -136,7 +137,7 @@ function Storyboard() {
 }
 
 const strip = [
-  { src: '/assets/story/family-00.jpg', alt: 'Family, Eid day' },
+  { src: '/assets/story/family-00.webp', alt: 'Family, Eid day' },
   { src: '/assets/story/childhood.jpg', alt: 'Then and now' },
   { src: '/assets/story/family-20.jpg', alt: 'With the little ones' },
   { src: '/assets/story/17.jpg', alt: 'Sea and sky' },
@@ -146,7 +147,7 @@ export default function StoryPage() {
   return (
     <Shell tone="dark">
       <section className="s-hero">
-        <img className="s-hero-img" src="/assets/story/03.jpg" alt="Ashab by the river in Chattogram" />
+        <img className="s-hero-img" src="/assets/story/03.webp" alt="Ashab by the river in Chattogram" />
         <div className="s-hero-shade" />
         <div className="s-hero-copy">
           <motion.p
@@ -206,7 +207,7 @@ export default function StoryPage() {
           <CountUp to={2023} group={false} label="founded" />
         </div>
         <Reveal className="hero-shot">
-          <img src="/assets/chokka-ig/boxes-in-hand.jpg" alt="Chokka's three games held in hand" loading="lazy" />
+          <img src="/assets/chokka-ig/boxes-in-hand.jpg" alt="Chokka's three games held in hand" loading="lazy" decoding="async" />
           <span className="hero-shot-cap">Three games, one hand.</span>
         </Reveal>
         <div className="shots">
@@ -252,7 +253,7 @@ export default function StoryPage() {
         <p className="eyebrow reel-label">Frames</p>
         <div className="reel-track">
           {strip.map((p) => (
-            <figure key={p.src}><img src={p.src} alt={p.alt} loading="lazy" /></figure>
+            <figure key={p.src}><img src={p.src} alt={p.alt} loading="lazy" decoding="async" /></figure>
           ))}
         </div>
       </section>
