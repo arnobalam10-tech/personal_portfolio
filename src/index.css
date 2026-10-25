@@ -666,3 +666,29 @@ a { color: inherit; }
 }
 @media (max-width: 860px) { .shots { column-count: 2; } }
 @media (max-width: 560px) { .shots { column-count: 1; } }
+
+/* ---- calmer story layout: every photo fits inside one screen ---- */
+.chapter { padding: 84px 48px; gap: 72px; }
+.chapter-photo { display: flex; flex-direction: column; align-items: center; }
+.chapter .chapter-photo .px {
+  --r: 0.8;
+  aspect-ratio: var(--r);
+  width: min(100%, calc(70vh * var(--r)));
+}
+.chapter.landscape .chapter-photo .px { --r: 1.3333; }
+.chapter.tall .chapter-photo .px { --r: 0.5637; }
+.chapter-cap { align-self: center; text-align: center; }
+.chapter-title { font-size: clamp(1.9rem, 3.4vw, 2.8rem); }
+.chapter-text p, .lead { font-size: 1.02rem; }
+.wide-shot-solo { aspect-ratio: 2 / 1; }
+.shots { column-count: 4; }
+.chokka-ch { padding: 80px 48px 96px; }
+.stats { margin: 36px 0 40px; }
+.stat-num { font-size: clamp(2.2rem, 4vw, 3.4rem); }
+@media (max-width: 1000px) { .shots { column-count: 3; } }
+@media (max-width: 860px) {
+  .shots { column-count: 2; }
+  .chapter { padding: 64px 22px; gap: 28px; }
+}
+@media (max-width: 560px) { .shots { column-count: 1; } }
+.chapter-photo::after { display: none; }
