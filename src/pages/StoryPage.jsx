@@ -51,11 +51,11 @@ function CountUp({ to, suffix = '', label, group = true }) {
   );
 }
 
-function Chapter({ n, kicker, title, children, photo, pos, flip, caption, landscape, imgClass }) {
+function Chapter({ n, kicker, title, children, photo, pos, flip, caption, landscape, tall, imgClass }) {
   return (
-    <section className={`chapter ${flip ? 'flip' : ''} ${landscape ? 'landscape' : ''}`}>
+    <section className={`chapter ${flip ? 'flip' : ''} ${landscape ? 'landscape' : ''} ${tall ? 'tall' : ''}`}>
       <Reveal className="chapter-photo">
-        <Parallax src={photo} alt={caption} pos={pos} imgClass={imgClass} />
+        <Parallax src={photo} alt={caption} pos={pos} imgClass={imgClass} still={tall} />
         <span className="chapter-cap">{caption}</span>
       </Reveal>
       <div className="chapter-text">
@@ -67,9 +67,18 @@ function Chapter({ n, kicker, title, children, photo, pos, flip, caption, landsc
   );
 }
 
+function Shot({ src, alt, cap }) {
+  return (
+    <Reveal as="figure" className="shot">
+      <img src={src} alt={alt} loading="lazy" />
+      <figcaption>{cap}</figcaption>
+    </Reveal>
+  );
+}
+
 const strip = [
   { src: '/assets/story/family-00.jpg', alt: 'Family, Eid day' },
-  { src: '/assets/story/04.jpg', alt: 'On the beach' },
+  { src: '/assets/story/childhood.jpg', alt: 'Then and now' },
   { src: '/assets/story/family-20.jpg', alt: 'With the little ones' },
   { src: '/assets/story/17.jpg', alt: 'Sea and sky' },
 ];
@@ -99,7 +108,7 @@ export default function StoryPage() {
       <Chapter
         n="I" kicker="The city" flip={false}
         title="I'm from Chattogram, the port city."
-        photo="/assets/story/22.jpg" pos="50% 50%" caption="Chattogram, wide open" imgClass="trim-left"
+        photo="/assets/story/04.jpg" pos="50% 45%" caption="Chattogram, by the sea"
       >
         <p>A city built on ships, trade and people who make things happen. It's where I learned that things don't just appear. Someone has to build them.</p>
       </Chapter>
@@ -115,13 +124,29 @@ export default function StoryPage() {
       <Chapter
         n="III" kicker="Grade nine" flip={false}
         title="My first business, at fifteen."
-        photo="/assets/story/friends.jpg" pos="50% 40%" caption="Friends, then and now"
+        photo="/assets/story/friends-collage.jpg" pos="50% 40%" caption="The people who were there for it" tall
       >
         <p>In grade nine I started my first business. Somewhere between the first idea and the first sale, I found the thing I've been chasing ever since: building a brand, and launching it.</p>
       </Chapter>
 
+      <Chapter
+        n="IV" kicker="The degree" flip
+        title="Oh, and I'm a BBA student."
+        photo="/assets/story/class.jpg" pos="50% 40%" caption="Pitching in class, apparently" tall
+      >
+        <p>I study business at North South University. Am I doing it for any grand reason? Not really. Mostly so I can say I did an undergrad.</p>
+      </Chapter>
+
+      <Chapter
+        n="~" kicker="Between launches" flip={false}
+        title="Between lectures and launches, there's always the sea."
+        photo="/assets/story/sunset.jpg" pos="50% 60%" caption="Sunset, with the boys" tall
+      >
+        <p>A break from the screen, a few friends, and a horizon that doesn't need a content calendar.</p>
+      </Chapter>
+
       <section className="chokka-ch">
-        <Reveal><p className="chapter-n">IV <span>Chokka</span></p></Reveal>
+        <Reveal><p className="chapter-n">V <span>Chokka</span></p></Reveal>
         <Reveal delay={0.08} as="h2" className="display chapter-title wide">
           Then I wanted to do something new. So I built Chokka.
         </Reveal>
@@ -136,20 +161,14 @@ export default function StoryPage() {
           <CountUp to={1000} suffix="+" label="game boxes sold" />
           <CountUp to={2023} group={false} label="founded" />
         </div>
-        <div className="chokka-shots">
-          <Parallax src="/assets/design/chokka/06-three-boxes-promo.webp" alt="Chokka's three game boxes" className="wide-shot" />
-          <figure>
-            <Parallax src="/assets/chokka-ig/launch.jpg" alt="Chokka launches its first original card game, Sholo Ana" still />
-            <figcaption>The launch post: Chokka's first original card game, Sholo Ana.</figcaption>
-          </figure>
-          <figure>
-            <Parallax src="/assets/chokka-ig/boxes-in-hand.jpg" alt="Chokka's games held in hand" />
-            <figcaption>Three games, one hand.</figcaption>
-          </figure>
-          <figure>
-            <Parallax src="/assets/chokka-ig/cards-table.jpg" alt="Chokka cards laid out on a table" />
-            <figcaption>Game night, set up.</figcaption>
-          </figure>
+        <Parallax src="/assets/design/chokka/06-three-boxes-promo.webp" alt="Chokka's three game boxes" className="wide-shot-solo" />
+        <div className="shots">
+          <Shot src="/assets/chokka-ig/launch.jpg" alt="Chokka launches its first original card game, Sholo Ana" cap="The launch post: Chokka's first original card game, Sholo Ana." />
+          <Shot src="/assets/chokka-ig/insights.jpg" alt="Instagram insights showing 574,231 views" cap="574,231 views in 90 days. Not on our bucket list." />
+          <Shot src="/assets/chokka-ig/boxes-in-hand.jpg" alt="Chokka's games held in hand" cap="Three games, one hand." />
+          <Shot src="/assets/chokka-ig/gamenight.jpg" alt="People playing Chokka card games" cap="Game night, in the wild." />
+          <Shot src="/assets/chokka-ig/cards-table.jpg" alt="Chokka cards laid out on a table" cap="The decks, laid out." />
+          <Shot src="/assets/chokka-ig/gimbal.jpg" alt="Filming content with a gimbal" cap="Behind the content: a phone, a gimbal, a friend." />
         </div>
       </section>
 
@@ -185,7 +204,7 @@ export default function StoryPage() {
         <ul>
           <li><b>Founder</b><span>Chokka</span></li>
           <li><b>Junior Digital Marketing Executive</b><span>Mortgage Magic · UK SaaS</span></li>
-          <li><b>BBA</b><span>North South University</span></li>
+          <li><b>BBA, for the sake of saying I did one</b><span>North South University</span></li>
         </ul>
       </section>
 

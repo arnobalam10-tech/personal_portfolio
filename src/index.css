@@ -494,6 +494,7 @@ a { color: inherit; }
 }
 .chapter-photo .px { aspect-ratio: 4 / 5; border-radius: 4px; }
 .chapter.landscape .chapter-photo .px { aspect-ratio: 4 / 3; }
+.chapter.tall .chapter-photo .px { aspect-ratio: 739 / 1311; }
 .chapter.landscape .chapter-photo .px img { filter: contrast(1.05); }
 .chapter-photo::after {
   content: '';
@@ -649,3 +650,19 @@ a { color: inherit; }
   .s-hero-img { animation: none; }
   * { scroll-behavior: auto !important; }
 }
+
+/* chokka gallery */
+.wide-shot-solo { aspect-ratio: 16 / 10; border-radius: 4px; margin-bottom: 14px; }
+.wide-shot-solo img { top: 0; height: 100%; }
+.shots { column-count: 3; column-gap: 14px; }
+.shot { break-inside: avoid; margin: 0 0 14px; }
+.shot img { width: 100%; display: block; border-radius: 4px; }
+.shot figcaption {
+  margin-top: 8px;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+@media (max-width: 860px) { .shots { column-count: 2; } }
+@media (max-width: 560px) { .shots { column-count: 1; } }
