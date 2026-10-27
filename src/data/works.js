@@ -126,17 +126,6 @@ export const works = [
     ratio: '4 / 3',
     tint: '#D8ECEC',
   },
-  {
-    id: 'ashatoru',
-    kind: 'web',
-    url: 'https://ashatoru.com/',
-    title: 'Ashatoru',
-    tags: ['Shopify', 'E-commerce'],
-    blurb: 'Shopify store for a bag brand, with custom plugins and custom CSS and HTML.',
-    cover: '/assets/projects/project-4.webp',
-    ratio: '4 / 3',
-    tint: '#F2DADA',
-  },
 ];
 
 export const brands = [
@@ -147,7 +136,7 @@ export const brands = [
   { name: 'InFrame', logo: design.inframe.logo },
   { name: 'Team Lonthon', logo: design['team-lonthon'].logo },
   { name: 'Estore Vendor' },
-  { name: 'Ashatoru' },
+  { name: 'Azeez' },
   { name: 'WhatsMyGrade' },
   { name: 'Kagoj' },
 ];
